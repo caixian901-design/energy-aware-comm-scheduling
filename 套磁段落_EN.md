@@ -26,7 +26,7 @@ cooling fraction and the grid carbon profile, and quantifies a real
 trade-off that the scheduling literature usually ignores:
 
   * making syncs 1x vs 64x more frequent adds ~7% to training makespan but
-    cuts whole-facility carbon by ~16% (Xining, f = 0.80);
+    cuts whole-facility carbon by ~14% (Xining, f = 0.80);
   * on a low-carbon, variable grid, shifting the training start time by a
     few hours changes emissions by up to ~57% with no hardware change.
 
@@ -50,7 +50,7 @@ APNet 2026 load-balancing line). Your analyses focus on how communication
 shapes training time; my pilot asks the complementary question: how does the
 same schedule shape facility energy, PUE and carbon? I quantify a concrete
 tension — the time-optimal sync interval is not the carbon-optimal one
-(~7% time vs ~16% carbon at Xining) — which suggests a natural extension:
+(~7% time vs ~14% carbon at Xining) — which suggests a natural extension:
 communication-aware, energy-aware co-scheduling for AI clusters. I would be
 very interested in pursuing this direction in your group.
 ```
@@ -63,7 +63,7 @@ modelling asks how well a data centre performs under real demand. My pilot
 adds the energy side of the same coin: I model the facility's PUE from
 measured weather and couple it to a training-workload model, so that
 allocation and scheduling decisions can be evaluated on makespan AND
-emissions. The result — a ~7% time / ~16% carbon trade-off in the sync
+emissions. The result — a ~7% time / ~14% carbon trade-off in the sync
 interval — is exactly the kind of analytically tractable problem your
 modelling style is suited for.
 ```
