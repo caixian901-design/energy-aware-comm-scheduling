@@ -1,0 +1,37 @@
+=== Headline numbers (Xining, measured TMYx weather, 2,266 m) ===
+
+f=0.80, Qinghai-type CI:
+  k=1 : makespan 3.8889 h, carbon 156.80 kg, E_fac 1274.64 kWh, PUE 1.14901
+  k=64: makespan 3.6206 h, carbon 182.60 kg, E_fac 1484.36 kWh, PUE 1.14901
+  makespan k=64->k=1: +7.41%   (relative to k=64)
+  carbon   k=64->k=1: -14.13%
+  makespan k=1->k=64: -6.90%   (relative to k=1)
+  carbon   k=1->k=64: 16.45%
+
+=== Liquid-fraction lever (Xining, k=1, Qinghai-type CI) ===
+  f=0.60: PUE 1.16956, carbon 159.60 kg, E_fac 1297.43 kWh
+  f=0.80: PUE 1.14901, carbon 156.80 kg, E_fac 1274.64 kWh
+  f=0.90: PUE 1.13874, carbon 155.40 kg, E_fac 1263.24 kWh
+  f=0.96: PUE 1.13257, carbon 154.60 kg, E_fac 1256.40 kWh
+  f=1.00: PUE 1.12846, carbon 154.00 kg, E_fac 1251.84 kWh
+  f=0.60->1.00 carbon: -3.51%
+
+=== Grid lever (Xining, f=0.80, k=8) ===
+  Qinghai: carbon 180.20 kg;  Coal: 1064.50 kg
+  ratio coal/qinghai = 5.91x
+  effective CI: qinghai 123 g/kWh, coal 727 g/kWh (model inputs)
+
+=== Time-shift lever (Xining, f=0.80, k=8, Qinghai-type CI) ===
+  carbon by start hour: min 89.98 kg at h=13, max 180.59 kg at h=1
+  max reduction vs worst: 50.2%
+
+=== Beta sensitivity (Xining, f=0.80, Qinghai-type CI) ===
+  beta=0.00: k=1 M=3.8889h C=156.83kg | k=64 M=2.7951h C=140.66kg | M-ratio 1.3913 C-ratio 1.1150
+  beta=0.10: k=1 M=3.8889h C=156.83kg | k=64 M=3.0703h C=154.69kg | M-ratio 1.2666 C-ratio 1.0138
+  beta=0.15: k=1 M=3.8889h C=156.83kg | k=64 M=3.2079h C=161.66kg | M-ratio 1.2123 C-ratio 0.9701
+  beta=0.20: k=1 M=3.8889h C=156.83kg | k=64 M=3.3454h C=168.63kg | M-ratio 1.1624 C-ratio 0.9300
+  beta=0.30: k=1 M=3.8889h C=156.83kg | k=64 M=3.6206h C=182.57kg | M-ratio 1.0741 C-ratio 0.8590
+  beta=0.40: k=1 M=3.8889h C=156.83kg | k=64 M=3.8957h C=196.51kg | M-ratio 0.9982 C-ratio 0.7981
+  beta=0.60: k=1 M=3.8889h C=156.83kg | k=64 M=4.4460h C=223.80kg | M-ratio 0.8747 C-ratio 0.7007
+  crossover beta* (C(k=1) <= C(k=64) first time): 0.116
+

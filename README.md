@@ -74,9 +74,34 @@ python code/make_tradeoff_figures.py   # 4 张图 → figures/
 套磁论文/
 ├── README.md                    本说明（2 页）
 ├── 套磁段落_EN.md              可直接粘贴的英文套磁段落
+├── CITATION.cff                 引用元数据
 ├── code/
 │   ├── workload_simulation.py   主仿真（PUE 模型 + GPU 负载 + 扫描）
-│   └── make_tradeoff_figures.py 权衡曲线绘图
+│   ├── make_tradeoff_figures.py 权衡曲线绘图（Figure 1-4）
+│   └── paper_numbers.py         论文数字提取 + β 敏感性（Figure 5）
 ├── data/tradeoff_results.csv    210 组完整结果
-└── figures/fig_t1..t4.png       4 张图
+├── figures/fig_t1..t5.png       5 张图
+└── zenodo_upload/               Zenodo 发布包
+    ├── EnergyAwareCommScheduling.pdf  正式论文（14 页）
+    ├── manuscript.md                  论文 Markdown 源码
+    ├── Figure1..Figure5.png           5 张正式命名图
+    ├── build_pdf.py                   PDF 构建脚本
+    └── ZENODO_UPLOAD.txt              Zenodo 元数据与上传步骤
+```
+
+## 8. 论文与 Zenodo
+
+研究已写成正式论文（14 页，5 图 12 公式），发布包在 `zenodo_upload/`：
+
+- **标题**：Communication scheduling is an energy decision: makespan-carbon trade-offs for distributed AI training in a high-altitude data centre
+- **核心结论**：k=64 比 k=1 快 7.4% 但多排 14.1% 碳；两者 PUE 恒等（1.14901）；权衡成立的条件是稀疏同步付出收敛代价（β>β*=0.116，解析值 0.114）
+- **上传步骤**：见 `zenodo_upload/ZENODO_UPLOAD.txt`（逐字段元数据 + License 双授权方案 + 发布后三步）
+
+复现论文全部数字与图表：
+
+```bash
+python code/workload_simulation.py     # 扫描 → data/tradeoff_results.csv
+python code/make_tradeoff_figures.py   # 5 张图 → figures/
+python code/paper_numbers.py           # 论文数字 + β 敏感性
+python zenodo_upload/build_pdf.py zenodo_upload/manuscript.md zenodo_upload/EnergyAwareCommScheduling.pdf zenodo_upload/
 ```

@@ -1,0 +1,238 @@
+================================================================================
+ZENODO UPLOAD - Energy-Aware Communication Scheduling
+Communication scheduling is an energy decision: makespan-carbon trade-offs for
+distributed AI training in a high-altitude data centre
+================================================================================
+
+准备好日期：2026-09-15
+作者：Xian Cai（蔡贤），青海民族大学 智能科学与工程学院
+ORCID：0009-0007-5083-7078
+仓库：https://github.com/caixian901-design/energy-aware-comm-scheduling
+
+--------------------------------------------------------------------------------
+1. 上传哪些文件
+--------------------------------------------------------------------------------
+
+Zenodo 的 "Files" 上传区，建议上传以下 13 个文件（共约 2.0 MB）：
+
+  EnergyAwareCommScheduling.pdf        ← 正文（14 页，5 图 12 公式）
+  manuscript.md                        ← Markdown 源码
+  Figure1_makespan_carbon_tradeoff.png ← Figure 1（k×f×碳剖面 权衡曲线）
+  Figure2_makespan_pue.png             ← Figure 2（PUE 对调度不变）
+  Figure3_carbon_profiles.png          ← Figure 3（两个示意碳剖面）
+  Figure4_carbon_aware_scheduling.png  ← Figure 4（起始时刻时移杠杆）
+  Figure5_beta_sensitivity.png         ← Figure 5（β 敏感性，β*=0.116）
+  tradeoff_results.csv                 ← 210 点完整扫描数据
+  workload_simulation.py               ← 主仿真（设施模型 + GPU 负载 + 扫描）
+  make_tradeoff_figures.py             ← Figure 1-4 绘图
+  paper_numbers.py                     ← 论文数字提取 + Figure 5（β 分析）
+  build_pdf.py                         ← 从 manuscript.md 构建 PDF
+  CITATION.cff                         ← 引用元数据
+
+不要上传：
+  manuscript.md.bak（如有备份）
+  _eq/（临时公式图片）
+  _page_*.png（检查用截图）
+  __pycache__（Python 缓存）
+
+--------------------------------------------------------------------------------
+2. 元数据（逐字段填写）
+--------------------------------------------------------------------------------
+
+Upload type
+  Publication  →  Preprint
+
+Title
+  Communication scheduling is an energy decision: makespan-carbon trade-offs
+  for distributed AI training in a high-altitude data centre
+
+Authors
+  Cai, Xian
+    Family name:  Cai
+    Given names:  Xian
+    ORCID:        0009-0007-5083-7078
+    Affiliation:  School of Intelligent Science and Engineering, Qinghai Minzu
+                  University, Xining, Qinghai 810007, China
+
+Description
+（粘下面这段，HTML 保留换行标签）
+
+<p>Distributed AI training is scheduled by its communication: how often the
+workers synchronise gradients is the scheduler's most direct control over
+makespan, and it is almost always tuned for time alone. This paper asks what
+that tuning costs in energy and carbon.</p>
+
+<p>A 512-accelerator data-parallel training pod (compute phase plus all-reduce
+communication phase) is coupled to a weather-driven facility model at a
+2 266 m plateau site (Xining) and to two illustrative hourly grid
+carbon-intensity profiles. A three-way sweep over the synchronisation interval
+k, the liquid-cooling fraction f and the carbon profile yields three results.
+First, the schedule is a genuine energy decision: at f = 0.80 the fastest
+schedule (k = 64) is <b>7.4 % faster</b> than the most frequent (k = 1) but
+emits <b>14.1 % more carbon</b>, while the mean PUE of the two is <b>identical
+to five decimal places (1.14901)</b> — the facility metric is blind to the very
+decision that moves carbon by 16 %.</p>
+
+<p>Second, the other levers are smaller or external: the whole liquid-cooling
+range f = 0.60 to 1.00 changes carbon by <b>3.5 %</b>, whereas the grid
+scenario changes it by <b>5.9x</b> (effective carbon intensity 123 vs
+727 g/kWh) and the training start hour alone by <b>50 %</b> for a fixed
+schedule. Third, the trade-off is conditional: it exists only when sparse
+synchronisation costs convergence, and the crossover staleness penalty is
+derived analytically as beta* = B/(A + B/k), which is <b>0.114</b> for the
+parameters used here (numerically 0.116).</p>
+
+<p>Communication scheduling should therefore be treated as an energy and
+carbon objective, reported as energy-to-solution and carbon per delivered step
+alongside PUE. All results are model-derived and reproduced by openly
+available code with no digitised data; the limitations (parametric staleness
+model, illustrative carbon profiles) are stated explicitly.</p>
+
+License
+  ⚠️ 注意：本文件包同时包含正文（CC BY 4.0）和代码（MIT），两者的授权不同。
+     Zenodo 只能为整个上传选一个 License，建议这样处理：
+
+       方案 A（推荐，最干净）：分两次上传
+         - 上传 1：PDF + manuscript.md + 5 张图 + CSV  →  License: CC BY 4.0
+         - 上传 2：4 个 .py 代码文件 + CITATION.cff     →  License: MIT
+         两次通过 "Related works" 互相链接（relation: is supplemented by）
+
+       方案 B（一次传完）：整包选 "Other (Open)"
+         并在 Description 末尾加一句：
+
+         <p>Licensing: the manuscript and figures are released under CC BY 4.0;
+         the accompanying Python source files are released under the MIT License
+         (see the GitHub repository).</p>
+
+     不要直接选 CC BY 4.0 了事——那会对 MIT 代码构成授权不一致。
+
+Keywords（逐个粘贴）
+  communication scheduling
+  synchronisation interval
+  staleness
+  distributed training
+  all-reduce
+  makespan
+  energy-to-solution
+  PUE
+  power usage effectiveness
+  carbon-aware computing
+  carbon intensity
+  liquid cooling
+  high altitude
+  Qinghai-Tibetan Plateau
+  East Data West Computing
+
+Language
+  English
+
+Related works
+  relation: is supplement to
+  identifier: https://github.com/caixian901-design/energy-aware-comm-scheduling
+  resource type: Software
+
+  relation: references
+  identifier: 10.5281/zenodo.22743562
+  resource type: Publication/Preprint
+  （这是 Paper A 的 DOI，本文的冷却/PUE 设施模型来自该预印本）
+
+  relation: references
+  identifier: 10.5281/zenodo.XXXXXXX
+  resource type: Publication/Preprint
+  （这是 Paper C 的 DOI——PUE is blind to the schedule。若 Paper C 尚未发布，
+    先删掉这一条，发布后补上；论文 References [15] 也同步更新）
+
+Version
+  1.0.0
+
+Publisher
+  Zenodo
+
+Contributors / Funding
+  留空（本文无外部资助）
+
+--------------------------------------------------------------------------------
+3. 上传步骤
+--------------------------------------------------------------------------------
+
+  1) 登录 https://zenodo.org ，右上角 "New upload"
+  2) 把 §1 的文件全部拖进上传区
+  3) Dropdown 选 "Preprint"
+  4) 按 §2 逐个字段填写（Description 用 "HTML" 模式粘贴）
+  5) 点 "Preview" 检查排版
+  6) 点 "Publish"
+  7) 发布后页面会显示 DOI（形如 10.5281/zenodo.XXXXXXXX）
+
+--------------------------------------------------------------------------------
+4. 发布后必做的三件事
+--------------------------------------------------------------------------------
+
+  【1】拿到新 DOI 后，把它填回论文
+       论文首页目前写的是 "Companion to doi:10.5281/zenodo.22743562"
+       （那是 Paper A 的 DOI）。拿到本文自己的 DOI 后，在同页补一行：
+
+         DOI: https://doi.org/<新 DOI>
+
+       然后重跑：
+         python build_pdf.py manuscript.md EnergyAwareCommScheduling.pdf .
+       再把新的 PDF 上传替换到 Zenodo（Zenodo 支持 "New version"）
+
+  【2】Paper C 发布后，把它的真实 DOI 填回：
+       - References [15] 的 doi:10.5281/zenodo.XXXXXXX
+       - Data and code availability 里的 "Companion preprint (parallelism lever)"
+       - 本文件 §2 Related works 第三条
+       - CITATION.cff 的 references
+
+  【3】套磁信里换链接
+       冷邮件里引自己的新预印本（这篇：通信调度×碳权衡）比引旧的那篇更有
+       说服力。把套磁段落里 GitHub 仓库链接 + 新 DOI 一起发出去。
+
+--------------------------------------------------------------------------------
+5. License 说明（重要，务必看）
+--------------------------------------------------------------------------------
+
+  正文、图、数据  →  CC BY 4.0
+  代码            →  MIT
+
+  本上传包两类都有。按 §2 的 License 字段处理（方案 A 分两次传，或方案 B 整包
+  选 "Other (Open)" 并在 Description 里写明双授权）。
+
+  为什么不直接选 CC BY 4.0：
+    MIT 与 CC BY 4.0 都是宽松许可，本身不冲突，但如果你把 MIT 代码以
+    "CC BY 4.0" 的标签发布，就改变了该代码的授权条款，作者声明的 MIT
+    被覆盖。分标或选 Other 并写明，才是准确的。
+
+--------------------------------------------------------------------------------
+6. 学术诚信声明（本包已内嵌，可放心提交）
+--------------------------------------------------------------------------------
+
+  论文 "Declarations" 一节已经写明：
+
+    - 无外部资助
+    - 无利益冲突
+    - 使用 AI 工具的方式（代码起草、图表排版、语言润色），并明确所有模型定义、
+      参数选择、物理解释、结果与结论均为作者本人；所有数字都由仓库脚本复现
+    - 不涉及人类受试者、个人数据、动物实验，无需伦理审批
+    - 唯一第三方输入是公开的 TMYx 气象文件（climate.onebuilding.org），
+      已在 Data and code availability 一节逐站列出文件名
+    - 未使用任何专有数据；未从已发表图中数字化取数
+    - 所有参考文献均经核实真实存在且按其实际内容引用
+      （LCN 2025 与 APNet '26 两篇通信调度文献已联网核实 DOI）
+
+--------------------------------------------------------------------------------
+7. 检查清单
+--------------------------------------------------------------------------------
+
+  [ ] EnergyAwareCommScheduling.pdf 打开正常，14 页，5 张图、12 个公式
+  [ ] 所有作者信息、ORCID 正确
+  [ ] Description 里的数字与 PDF 正文完全一致
+       （7.4% / 14.1% / 1.14901 / 16% / 3.5% / 5.9x / 123 vs 727 / 50% /
+         0.114 / 0.116 / 512 / 2 266 m）
+  [ ] License 按 §5 处理（分两次传，或选 Other 并写明双授权）
+  [ ] Related works 里三条关系都填了（Software、Paper A；Paper C 发布前
+       先不填第三条）
+  [ ] 气象数据来源已在 Description 或 manuscript 里注明 climate.onebuilding.org
+  [ ] 没有上传 _eq、_page_*.png、__pycache__、.bak
+  [ ] 发布后立即把新 DOI 抄回论文首页、CITATION.cff 和套磁信
+
+================================================================================
