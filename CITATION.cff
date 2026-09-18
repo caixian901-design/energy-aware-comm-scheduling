@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this code or these results, please cite the preprint below."
-title: "Communication scheduling is an energy decision: makespan-carbon trade-offs for distributed AI training in a high-altitude data centre"
+message: "If you use this code or these results, please cite the published preprints below."
+title: "PUE is blind to the schedule: energy and carbon trade-offs of GPU training workloads in a high-altitude AI data centre"
 type: software
 authors:
   - family-names: Cai
@@ -9,7 +9,7 @@ authors:
     affiliation: "School of Intelligent Science and Engineering, Qinghai Minzu University, Xining, Qinghai 810007, China"
 repository-code: "https://github.com/caixian901-design/energy-aware-comm-scheduling"
 license: MIT
-version: "1.0.0"
+version: "1.1.0"
 date-released: "2026-09-15"
 keywords:
   - communication scheduling
@@ -29,31 +29,20 @@ keywords:
   - East Data West Computing
 abstract: >-
   Simulation code, derived data and figures for a study of the energy and carbon
-  side of communication scheduling in distributed AI training. A 512-accelerator
-  data-parallel training pod (compute phase plus all-reduce communication phase)
-  is coupled to a weather-driven PUE facility model at a 2 266 m plateau site
-  (Xining) and to two illustrative hourly grid carbon-intensity profiles. The
-  synchronisation interval k is a genuine energy lever: at liquid fraction
-  f = 0.80 the fastest schedule (k = 64) is 7.4 % faster than the most frequent
-  (k = 1) but emits 14.1 % more carbon, while the mean PUE of both is identical
-  to five decimal places (1.14901). The other levers are quantified on the same
-  model: liquid fraction (3.5 %), grid scenario (5.9x, 123 vs 727 g/kWh) and
-  start-hour scheduling (50 %). The makespan-carbon trade-off exists only if
-  sparse synchronisation costs convergence; the crossover staleness penalty is
-  derived analytically as beta* = B/(A + B/k) = 0.114 (numerically 0.116).
-  The facility PUE model is shared with the companion preprint
-  doi:10.5281/zenodo.22743562.
+  side of communication scheduling in distributed AI training. A
+  compute-phase / communication-phase model of a 100 000-step distributed
+  training job is coupled to a temperature-dependent cooling model at a 2 266 m
+  plateau site and to time-varying grid carbon intensity. Across ten feasible
+  schedules of the same job, the mean PUE is identical to four decimal places
+  (1.1490) while carbon per job spans 13.1x (4.91 to 64.25 tCO2e) and grid energy
+  per delivered step spans 15.7x (0.142 to 2.229 kWh/step). PUE is the ratio of
+  facility power to IT power and is therefore invariant to the compute duty
+  cycle; it cannot rank the carbon performance of training workloads. The
+  marginal carbon cost of one accelerator-hour of makespan is P_comm x CI, fixed
+  by the accelerator's idle-phase power and the grid, and independent of the
+  cooling design. All results are model-derived and reproducible from the code in
+  this repository.
 references:
-  - type: article
-    title: "Cooling Architecture Optimization and PUE Modelling for Hyperscale AI Data Centres in High-Altitude Low-Pressure Environments: A Case Study on the Qinghai-Tibetan Plateau"
-    authors:
-      - family-names: Cai
-        given-names: Xian
-        orcid: "https://orcid.org/0009-0007-5083-7078"
-    year: 2026
-    doi: "10.5281/zenodo.22743562"
-    url: "https://doi.org/10.5281/zenodo.22743562"
-    notes: "Companion preprint; the facility (PUE) model reused here."
   - type: article
     title: "PUE is blind to the schedule: energy and carbon trade-offs of GPU training workloads in a high-altitude AI data centre"
     authors:
@@ -61,6 +50,16 @@ references:
         given-names: Xian
         orcid: "https://orcid.org/0009-0007-5083-7078"
     year: 2026
-    doi: "10.5281/zenodo.XXXXXXX"
-    url: "https://doi.org/10.5281/zenodo.XXXXXXX"
-    notes: "Companion preprint on the parallelism lever (DOI to be assigned on publication)."
+    doi: "10.5281/zenodo.22763084"
+    url: "https://doi.org/10.5281/zenodo.22763084"
+    notes: "The published preprint this software accompanies (v1.0, 2026-09-15)."
+  - type: article
+    title: "Cooling Architecture Optimization and PUE Modelling for Hyperscale AI Data Centres in High-Altitude Low-Pressure Environments: A Case Study on the Qinghai-Tibetan Plateau"
+    authors:
+      - family-names: Cai
+        given-names: Xian
+        orcid: "https://orcid.org/0009-0007-5083-7078"
+    year: 2026
+    doi: "10.5281/zenodo.22743561"
+    url: "https://doi.org/10.5281/zenodo.22743561"
+    notes: "Companion preprint supplying the facility (PUE) model reused here. Concept DOI, currently resolving to v1.1."

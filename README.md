@@ -2,6 +2,27 @@
 
 **Pilot study（套磁前研究证明，2 页说明）**
 
+> ⚠️ **本仓库状态说明（2026-09-18 更新）**
+>
+> 本仓库的代码、数据与本文档对应的是**早期 pilot 版本（草稿 B）**：512 加速器、
+> 210 组扫描。该草稿**没有 DOI，且已被下列正式发布的预印本取代**。
+>
+> **请引用已发布的预印本，而不是本 README 中的数字：**
+>
+> | | 预印本 | DOI |
+> |---|---|---|
+> | **C**（主结果） | *PUE is blind to the schedule: energy and carbon trade-offs of GPU training workloads in a high-altitude AI data centre* | [10.5281/zenodo.22763084](https://doi.org/10.5281/zenodo.22763084) |
+> | **A**（设施模型） | *Cooling Architecture Optimization and PUE Modelling for Hyperscale AI Data Centres in High-Altitude Low-Pressure Environments: A Case Study on the Qinghai–Tibetan Plateau* | [10.5281/zenodo.22743561](https://doi.org/10.5281/zenodo.22743561) |
+>
+> **C 的关键结果**（与下文 pilot 数字不同，以 C 为准）：10 000 加速器、100 000 步、
+> 3 840 点扫描；十种可行调度下**平均 PUE 恒等 1.1490**，而**碳排跨度 13.1×**
+> （4.91–64.25 tCO₂e）；起始时刻单独 54%；液冷区间 f=0→1 仅 9.11% 且全扫描点恒定。
+>
+> 下文 §1–§8 保留为 pilot 阶段的历史记录，**其中的 7.4% / 14%、210 组、512 GPU 等
+> 数字仅供追溯，请勿引用**。
+
+---
+
 > 一句话：通信调度（多久同步一次梯度）会同时改变训练**完工时间**、数据中心**PUE** 与**碳排放**——本 pilot 把三者的权衡量化出来了，为"碳感知的智算中心运行优化"方向提供了第一个可复现的结果。
 
 ---
